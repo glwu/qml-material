@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 import Material.Extras 0.1
 
@@ -14,7 +14,7 @@ ColumnLayout {
 
         DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : Units.dp(48)
+            dayAreaBottomMargin : dp(48)
         }
 
     }
@@ -27,7 +27,7 @@ ColumnLayout {
 
         DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : Units.dp(48)
+            dayAreaBottomMargin : dp(48)
             isLandscape: true
         }
 
@@ -35,7 +35,7 @@ ColumnLayout {
 
     ColumnLayout {
         anchors.centerIn: parent
-        spacing: Units.dp(16)
+        spacing: dp(16)
 
         Button {
             Layout.alignment: Qt.AlignCenter

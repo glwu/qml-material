@@ -1,13 +1,13 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.2 as QuickControls
-import Material 0.1
+import QtQuick 2.4
+import QtQuick.Controls 1.3 as QuickControls
+import Material 0.2
 import Material.Extras 0.1
 
 Item {
 
     Dialog {
         id: alertNoTitleBar
-        width: Units.dp(300)
+        width: dp(300)
         text: "Discard draft?"
         hasActions: true
         positiveButtonText: "discard"
@@ -16,7 +16,7 @@ Item {
 
     Dialog {
         id: alertWithTitleBar
-        width: Units.dp(300)
+        width: dp(300)
         title: "Use Google's location service?"
         text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
         hasActions: true
@@ -89,7 +89,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: Units.dp(20)
+        spacing: dp(20)
 
         Button {
             text: "Show alert without title bar"

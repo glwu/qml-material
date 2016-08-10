@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import Material 0.1
+import QtQuick 2.4
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 import Material.Extras 0.1
 
@@ -7,7 +7,7 @@ Item {
     View {
         anchors {
             fill: parent
-            margins: Units.dp(32)
+            margins: dp(32)
         }
 
         elevation: 1
@@ -49,7 +49,7 @@ Item {
                 action: Icon {
                     anchors.centerIn: parent
                     name: "device/access_alarm"
-                    size: Units.dp(32)
+                    size: dp(32)
                 }
             }
 

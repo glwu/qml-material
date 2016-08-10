@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 ColumnLayout {
     spacing: 0
@@ -11,15 +11,15 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumHeight: grid.height + Units.dp(80)
-            Layout.minimumWidth: grid.width + Units.dp(80)
+            Layout.minimumHeight: grid.height + dp(80)
+            Layout.minimumWidth: grid.width + dp(80)
             color: index == 0 ? "#EEE" : "#333"
 
             GridLayout {
                 id: grid
                 anchors.centerIn: parent
-                rowSpacing: Units.dp(20)
-                columnSpacing: Units.dp(10)
+                rowSpacing: dp(20)
+                columnSpacing: dp(10)
                 columns: 2
 
                 Label {
@@ -82,6 +82,25 @@ ColumnLayout {
                     minimumValue: 0
                     maximumValue: 100
                     activeFocusOnPress: true
+                    darkBackground: index == 1
+                }
+
+                Label {
+                    text: "Customized Numeric Value Label"
+                    wrapMode: Text.WordWrap
+                    Layout.alignment:  Qt.AlignBottom
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                }
+
+                Slider {
+                    Layout.alignment: Qt.AlignCenter
+                    numericValueLabel: true
+                    stepSize: 1
+                    minimumValue: 0
+                    maximumValue: 100
+                    alwaysShowValueLabel: true
+                    knobLabel: value + "%"
+                    knobDiameter: dp(42)
                     darkBackground: index == 1
                 }
 

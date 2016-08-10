@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 ColumnLayout {
     spacing: 0
@@ -11,15 +11,15 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumHeight: grid.height + Units.dp(80)
-            Layout.minimumWidth: grid.width + Units.dp(80)
+            Layout.minimumHeight: grid.height + dp(80)
+            Layout.minimumWidth: grid.width + dp(80)
             color: index == 0 ? "#EEE" : "#333"
 
             GridLayout {
                 id: grid
                 anchors.centerIn: parent
-                rowSpacing: Units.dp(40)
-                columnSpacing: Units.dp(40)
+                rowSpacing: dp(40)
+                columnSpacing: dp(40)
                 columns: 3
 
                 // Empty filler

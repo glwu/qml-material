@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import Material 0.1
+import QtQuick 2.4
+import Material 0.2
 
 
 Item {
@@ -14,7 +14,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: Units.dp(20)
+        spacing: dp(20)
 
         Button {
             text: "Show Time Picker Dialog"
@@ -33,7 +33,7 @@ Item {
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: Units.dp(16)
+            spacing: dp(16)
 
             Label {
                 text: "24 hour clock:"

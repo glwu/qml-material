@@ -1,5 +1,5 @@
-import QtQuick 2.2
-import Material 0.1
+import QtQuick 2.4
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 
 ApplicationWindow {
@@ -11,14 +11,13 @@ ApplicationWindow {
     visible: true
 
     theme {
-        primaryColor: Palette.colors["blue"]["500"]
-        primaryDarkColor: Palette.colors["blue"]["700"]
-        accentColor: Palette.colors["red"]["A200"]
+        primaryColor: "blue"
+        accentColor: "red"
         tabHighlightColor: "white"
     }
 
     property var styles: [
-            "Icons", "Custom Icons", "Color Palette", "Typography"
+            "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
@@ -30,11 +29,11 @@ ApplicationWindow {
             "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
-    property var sections: [ styles, basicComponents, compoundComponents ]
+    property var sections: [ basicComponents, styles, compoundComponents ]
 
-    property var sectionTitles: [ "Style", "Basic Components", "Compound Components" ]
+    property var sectionTitles: [ "Basic Components", "Style", "Compound Components" ]
 
-    property string selectedComponent: styles[0]
+    property string selectedComponent: sections[0][0]
 
     initialPage: TabbedPage {
         id: page
@@ -85,7 +84,9 @@ ApplicationWindow {
         NavigationDrawer {
             id: navDrawer
 
-            enabled: page.width < Units.dp(500)
+            enabled: page.width < dp(500)
+
+            onEnabledChanged: smallLoader.active = enabled
 
             Flickable {
                 anchors.fill: parent
@@ -137,11 +138,13 @@ ApplicationWindow {
         }
 
         Loader {
+            id: smallLoader
             anchors.fill: parent
             sourceComponent: tabDelegate
 
             property var section: []
-            visible: navDrawer.enabled
+            visible: active
+            active: false
         }
     }
 
@@ -154,12 +157,12 @@ ApplicationWindow {
         MenuField {
             id: selection
             model: ["Primary color", "Accent color", "Background color"]
-            width: Units.dp(160)
+            width: dp(160)
         }
 
         Grid {
             columns: 7
-            spacing: Units.dp(8)
+            spacing: dp(8)
 
             Repeater {
                 model: [
@@ -171,11 +174,11 @@ ApplicationWindow {
                 ]
 
                 Rectangle {
-                    width: Units.dp(30)
-                    height: Units.dp(30)
-                    radius: Units.dp(2)
+                    width: dp(30)
+                    height: dp(30)
+                    radius: dp(2)
                     color: Palette.colors[modelData]["500"]
-                    border.width: modelData === "white" ? Units.dp(2) : 0
+                    border.width: modelData === "white" ? dp(2) : 0
                     border.color: Theme.alpha("#000", 0.26)
 
                     Ink {
@@ -208,6 +211,7 @@ ApplicationWindow {
         id: tabDelegate
 
         Item {
+
             Sidebar {
                 id: sidebar
 

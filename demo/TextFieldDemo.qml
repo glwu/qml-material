@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 Item {
     implicitHeight: column.height
@@ -8,11 +8,11 @@ Item {
     ColumnLayout {
         id: column
         anchors.centerIn: parent
-        spacing: Units.dp(32)
+        spacing: dp(32)
 
         TextField {
             text: "Big Field with text"
-            font.pixelSize: Units.dp(32)
+            font.pixelSize: dp(32)
             anchors.horizontalCenter: parent.horizontalCenter
         }
 

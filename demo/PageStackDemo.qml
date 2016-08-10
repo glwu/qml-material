@@ -1,83 +1,91 @@
-import QtQuick 2.0
-import Material 0.1
+import QtQuick 2.4
+import Material 0.2
 import Material.Extras 0.1
 
 Item {
 
-	Column {
-		anchors.centerIn: parent
-		spacing: Units.dp(20)
+    Column {
+        anchors.centerIn: parent
+        spacing: dp(20)
 
-		Button {
-			anchors.horizontalCenter: parent.horizontalCenter
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-		    text: "Push subpage"
-		    elevation: 1
-		    onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
-		}
+            text: "Push subpage"
+            elevation: 1
+            onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
+        }
 
-		Image {
-			id: image
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-			anchors.horizontalCenter: parent.horizontalCenter
+            text: "Push subpage with sidebar"
+            elevation: 1
+            onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
+        }
 
-			source: Qt.resolvedUrl("images/balloon.jpg")
-			width: Units.dp(400)
-			height: Units.dp(250)
+        Image {
+            id: image
 
-			Ink {
-				anchors.fill: parent
+            anchors.horizontalCenter: parent.horizontalCenter
 
-				onClicked: overlayView.open(image)
-			}
-		}
+            source: Qt.resolvedUrl("images/balloon.jpg")
+            width: dp(400)
+            height: dp(250)
 
-	    Label {
-	    	anchors.horizontalCenter: parent.horizontalCenter
+            Ink {
+                anchors.fill: parent
 
-	    	style: "subheading"
-	    	color: Theme.light.subTextColor
-	    	text: "Tap to edit picture"
-	    	font.italic: true
-	    }
-	}
+                onClicked: overlayView.open(image)
+            }
+        }
 
-	OverlayView {
-		id: overlayView
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-		width: Units.dp(800)
-		height: Units.dp(500)
+            style: "subheading"
+            color: Theme.light.subTextColor
+            text: "Tap to edit picture"
+            font.italic: true
+        }
+    }
 
-		Image {
-			id: contentImage
-	    	source: Qt.resolvedUrl("images/balloon.jpg")
-	    	anchors.fill: parent
-	    }
+    OverlayView {
+        id: overlayView
 
-		Row {
-			anchors {
-				top: parent.top
-				right: parent.right
-				rightMargin: Units.dp(16)
-			}
-			height: Units.dp(48)
-			opacity: overlayView.transitionOpacity
-			
-			spacing: Units.dp(24)
+        width: dp(800)
+        height: dp(500)
 
-	        Repeater {
-	            model: ["content/add", "image/edit", "action/delete"]
+        Image {
+            id: contentImage
+            source: Qt.resolvedUrl("images/balloon.jpg")
+            anchors.fill: parent
+        }
 
-	            delegate: IconButton {
-	                id: iconAction
+        Row {
+            anchors {
+                top: parent.top
+                right: parent.right
+                rightMargin: dp(16)
+            }
+            height: dp(48)
+            opacity: overlayView.transitionOpacity
 
-	                iconName: modelData
+            spacing: dp(24)
 
-	                color: Theme.dark.iconColor
-	                size: iconName == "content/add" ? Units.dp(27) : Units.dp(24)
-	                anchors.verticalCenter: parent.verticalCenter
-	            }
-	        }
-		}
-	}
+            Repeater {
+                model: ["content/add", "image/edit", "action/delete"]
+
+                delegate: IconButton {
+                    id: iconAction
+
+                    iconName: modelData
+
+                    color: Theme.dark.iconColor
+                    size: iconName == "content/add" ? dp(27) : dp(24)
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+        }
+    }
 }
